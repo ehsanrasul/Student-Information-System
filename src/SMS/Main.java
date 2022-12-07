@@ -10,11 +10,20 @@ public class Main {
 	static StudentOperation operation;
 	static ArrayList <Teacher> teacher = new ArrayList<>();
 
+
+	Main(){
+
+		operation = new StudentOperation();
+		operation.list.add(new StudentInfo("Ehsan", "Rasul", 19, "20i-1812", "CE" , "house no.3", 2020, "ehsan@gmail.com","03110948524","english","math","urdu","object oriented","C++"));
+		DB();
+		
+	}	
+	
+	
 	public static void main(String[] args) {
 		operation = new StudentOperation();
 		DB();
-		MainMenu();
-		
+		MainMenu();		
 	}
 	
 
@@ -117,7 +126,7 @@ public class Main {
 		System.out.println("\t\t\tSTUDENT INFORMATION SYSTEM");
 		System.out.println("**********************************************************************************");
 
-		do {
+		//do {
 			System.out.println("\t\tPlease select the action you want to perform");
 			System.out.println("Press 1 for: Registering a Student");
 			System.out.println("Press 2 for: Fee Payment");
@@ -134,6 +143,7 @@ public class Main {
 			case 1:
 
 				addStudentData();
+				
 				break;
 
 			case 2:
@@ -153,13 +163,28 @@ public class Main {
 				}
 				
 				
+			
 				break;
 
+				
 			case 3:
 
 				System.out.println("\nPlease enter student roll number");
 				rollNumber = cin.next();
-				operation.search(rollNumber);
+				stud = null;
+				stud = operation.search(rollNumber);
+				if(stud != null)
+				{
+					System.out.println("Student Record Found !");
+					stud.getStudentInfo();					
+				}	
+				else {
+					
+					System.out.println("No such Record Found");
+					
+				}
+				
+				
 				break;
 
 			case 4:
@@ -192,7 +217,7 @@ public class Main {
 			default:
 			}
 
-		} while (!isExit);
+		//} while (!isExit);
 
 		
 		
@@ -246,7 +271,7 @@ public class Main {
 		
 		teacher.add(new Teacher(name, pNumber, age,email, password));
 		System.out.println("Registered Successfully");
-		Menu();
+		//Menu();
 				
 	}
 	
@@ -264,18 +289,19 @@ public class Main {
 			
 			if(Login()){
 				System.out.println("Logged In Successfully");
-				Menu();				
+				break;
+				//Menu();				
 			}else {
 				
 				System.out.println("OOPS ! Your Credentials are not Correct");
-			
+				break;
 			}
 			
 		}
 		else if(choice == 2) {
 			
 			Signup();
-			
+			break;
 		}else if(choice == 0) {
 			
 			System.out.println("Thank You");

@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class StudentOperation {
 
-	private static LinkedList<StudentInfo> list = new LinkedList<StudentInfo>();
+	public static LinkedList<StudentInfo> list = new LinkedList<StudentInfo>();
 	private static StudentInfo record;
 	@SuppressWarnings("unused")
 	private static int numOfStudent = 0;
